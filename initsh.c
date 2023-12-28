@@ -2,7 +2,7 @@
  *    Programmed By: Mohammed Isam [mohammed_isam1984@yahoo.com]
  *    Copyright 2020 (c)
  * 
- *    file: prompt.c
+ *    file: initsh.c
  *    This file is part of the "Let's Build a Linux Shell" tutorial.
  *
  *    This tutorial is free software: you can redistribute it and/or modify
@@ -17,39 +17,50 @@
  *
  *    You should have received a copy of the GNU General Public License
  *    along with this tutorial.  If not, see <http://www.gnu.org/licenses/>.
- */    
+ */
 
-#include <stdio.h>
+#include <string.h>
 #include "shell.h"
 #include "symtab/symtab.h"
 
+extern char **environ;
 
-void print_prompt1(void)
+void initsh()
 {
-    struct symtab_entry_s *entry = get_symtab_entry("PS1");
+    init_symtab();
 
-    if(entry && entry->val)
+    struct symtab_entry_s *entry;
+    char **p2 = environ;
+    
+    while(*p2)
     {
-        fprintf(stderr, "%s", entry->val);
+        char *eq = strchr(*p2, '=');
+        if(eq)
+        {
+            int len = eq-(*p2);
+            char name[len+1];
+            
+	    strncpy(name, *p2, len);
+            name[len] = '\0';
+            entry = add_to_symtab(name);
+            
+	    if(entry)
+            {
+                symtab_entry_setval(entry, eq+1);
+                entry->flags |= FLAG_EXPORT;
+            }
+        }
+        else
+        {
+            entry = add_to_symtab(*p2);
+        }
+        p2++;
     }
-    else
-    {
-        fprintf(stderr, "$ ");
-    }
+
+    
+    entry = add_to_symtab("PS1");
+    symtab_entry_setval(entry, "$ ");
+
+    entry = add_to_symtab("PS2");
+    symtab_entry_setval(entry, "> ");
 }
-
-
-void print_prompt2(void)
-{
-    struct symtab_entry_s *entry = get_symtab_entry("PS2");
-
-    if(entry && entry->val)
-    {
-        fprintf(stderr, "%s", entry->val);
-    }
-    else
-    {
-        fprintf(stderr, "> ");
-    }
-}
-

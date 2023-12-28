@@ -2,7 +2,7 @@
  *    Programmed By: Mohammed Isam [mohammed_isam1984@yahoo.com]
  *    Copyright 2020 (c)
  * 
- *    file: parser.h
+ *    file: dump.c
  *    This file is part of the "Let's Build a Linux Shell" tutorial.
  *
  *    This tutorial is free software: you can redistribute it and/or modify
@@ -19,12 +19,11 @@
  *    along with this tutorial.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PARSER_H
-#define PARSER_H
+#include "../shell.h"
+#include "../symtab/symtab.h"
 
-#include "scanner.h"    /* struct token_s */
-#include "source.h"     /* struct source_s */
-
-struct node_s *parse_simple_command(struct token_s *tok);
-
-#endif
+int dump(int argc, char **argv)
+{
+    dump_local_symtab();
+    return 0;
+}

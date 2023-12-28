@@ -1,8 +1,8 @@
 /* 
- *    Programmed By: Mohammed Isam [mohammed_isam1984@yahoo.com]
+ *    Programmed By: Mohammed Isam Mohammed [mohammed_isam1984@yahoo.com]
  *    Copyright 2020 (c)
  * 
- *    file: parser.h
+ *    file: builtins.c
  *    This file is part of the "Let's Build a Linux Shell" tutorial.
  *
  *    This tutorial is free software: you can redistribute it and/or modify
@@ -17,14 +17,13 @@
  *
  *    You should have received a copy of the GNU General Public License
  *    along with this tutorial.  If not, see <http://www.gnu.org/licenses/>.
- */
+ */    
 
-#ifndef PARSER_H
-#define PARSER_H
+#include "../shell.h"
 
-#include "scanner.h"    /* struct token_s */
-#include "source.h"     /* struct source_s */
+struct builtin_s builtins[] =
+{
+    { "dump"    , dump       },
+};
 
-struct node_s *parse_simple_command(struct token_s *tok);
-
-#endif
+int builtins_count = sizeof(builtins)/sizeof(struct builtin_s);
