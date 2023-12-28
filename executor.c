@@ -150,30 +150,53 @@ int do_simple_command(struct node_s *node)
         return 0;
     }
     
-    int argc = 0;
-    long max_args = 255;
-    char *argv[max_args+1];     /* keep 1 for the terminating NULL arg */
+    int argc = 0;           /* arguments count */
+    int targc = 0;          /* total alloc'd arguments count */
+    char **argv = NULL;
     char *str;
-    
+
     while(child)
     {
         str = child->val.str;
-        argv[argc] = malloc(strlen(str)+1);
+        /*perform word expansion */
+        struct word_s *w = word_expand(str);
         
-	if(!argv[argc])
+        /* word expansion failed */
+        if(!w)
         {
-            free_argv(argc, argv);
-            return 0;
+            child = child->next_sibling;
+            continue;
+        }
+
+        /* add the words to the arguments list */
+        struct word_s *w2 = w;
+        while(w2)
+        {
+            if(check_buffer_bounds(&argc, &targc, &argv))
+            {
+                str = malloc(strlen(w2->data)+1);
+                if(str)
+                {
+                    strcpy(str, w2->data);
+                    argv[argc++] = str;
+                }
+            }
+            w2 = w2->next;
         }
         
-	strcpy(argv[argc], str);
-        if(++argc >= max_args)
-        {
-            break;
-        }
+        /* free the memory used by the expanded words */
+        free_all_words(w);
+        
+        /* check the next word */
         child = child->next_sibling;
     }
-    argv[argc] = NULL;
+
+    /* even if arc == 0, we need to alloc memory for argv */
+    if(check_buffer_bounds(&argc, &targc, &argv))
+    {
+        /* NULL-terminate the array */
+        argv[argc] = NULL;
+    }
 
     int i = 0;
     for( ; i < builtins_count; i++)
@@ -181,7 +204,7 @@ int do_simple_command(struct node_s *node)
         if(strcmp(argv[0], builtins[i].name) == 0)
         {
             builtins[i].func(argc, argv);
-            free_argv(argc, argv);
+            free_buffer(argc, argv);
             return 1;
         }
     }
@@ -207,12 +230,13 @@ int do_simple_command(struct node_s *node)
     else if(child_pid < 0)
     {
         fprintf(stderr, "error: failed to fork command: %s\n", strerror(errno));
+	free_buffer(argc, argv);
         return 0;
     }
 
     int status = 0;
     waitpid(child_pid, &status, 0);
-    free_argv(argc, argv);
+    free_buffer(argc, argv);
     
     return 1;
 }
