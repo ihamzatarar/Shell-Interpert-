@@ -2,7 +2,7 @@
  *    Programmed By: Mohammed Isam [mohammed_isam1984@yahoo.com]
  *    Copyright 2020 (c)
  * 
- *    file: shell.h
+ *    file: executor.h
  *    This file is part of the "Let's Build a Linux Shell" tutorial.
  *
  *    This tutorial is free software: you can redistribute it and/or modify
@@ -19,15 +19,13 @@
  *    along with this tutorial.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef BACKEND_H
+#define BACKEND_H
 
-void print_prompt1(void);
-void print_prompt2(void);
+#include "node.h"
 
-char *read_cmd(void);
-
-#include "source.h"
-int  parse_and_execute(struct source_s *src);
+char *search_path(char *file);
+int do_exec_cmd(int argc, char **argv);
+int do_simple_command(struct node_s *node);
 
 #endif
