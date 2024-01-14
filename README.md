@@ -1,4 +1,4 @@
-<img width="734" alt="Screenshot 2024-01-15 at 12 30 18 AM" src="https://github.com/ihamzatarar/Custom-Shell-Interpert/assets/83910939/7abc81a0-0f25-4d10-a2fd-0b4ed06110db"># Custom C Shells: CLI & GUI
+# Custom C Shells: CLI & GUI
 
 ## About
 
@@ -56,9 +56,10 @@ For detailed information about the functionality and the design of the shells, r
 ## Screen Shots 
 
 <img width="643" alt="Screenshot 2024-01-15 at 12 28 59 AM" src="https://github.com/ihamzatarar/Custom-Shell-Interpert/assets/83910939/d7bffa98-729d-430e-a03a-183898924e05">
-
 <img width="734" alt="Screenshot 2024-01-15 at 12 30 10 AM" src="https://github.com/ihamzatarar/Custom-Shell-Interpert/assets/83910939/7d151022-c130-429c-a409-a37e5fba852b">
-![Uploading Screenshot 2024-01-15 at 12.30.18 AM.png…]()
+<img width="734" alt="Screenshot 2024-01-15 at 12 30 18 AM" src="https://github.com/ihamzatarar/Custom-Shell-Interpert/assets/83910939/7abc81a0-0f25-4d10-a2fd-0b4ed06110db">
+<img width="734" alt="Screenshot 2024-01-15 at 12 30 18 AM" src="https://github.com/ihamzatarar/Custom-Shell-Interpert/assets/83910939/028dfdb9-3f5e-42e9-ba5a-f70dafb7844e">
+
 
 
 
