@@ -1,4 +1,4 @@
-# Custom C Shells: CLI & GUI
+<img width="734" alt="Screenshot 2024-01-15 at 12 30 18 AM" src="https://github.com/ihamzatarar/Custom-Shell-Interpert/assets/83910939/7abc81a0-0f25-4d10-a2fd-0b4ed06110db"># Custom C Shells: CLI & GUI
 
 ## About
 
@@ -52,6 +52,12 @@ This repository hosts two distinct shells implemented in C: a command-line inter
 ## Documentation
 
 For detailed information about the functionality and the design of the shells, refer to the `docs` folder.
+
+## Screen Shots 
+
+
+
+
 
 ## License
 
