@@ -1,7 +1,3 @@
-Creating a comprehensive README file is an essential aspect of your GitHub repository. It serves as the first point of contact for anyone who visits your repository, providing them with an understanding of what your project is about, how to set it up, and how to use it. Below is a template for a README file for your repository, which contains a command-line shell and a GUI shell, both written in C and based on the tutorial from Hacker Noon and the 'lets-build-a-linux-shell' GitHub repository.
-
----
-
 # Custom C Shells: CLI & GUI
 
 ## About
@@ -56,10 +52,6 @@ This repository hosts two distinct shells implemented in C: a command-line inter
 ## Documentation
 
 For detailed information about the functionality and the design of the shells, refer to the `docs` folder.
-
-## Contributing
-
-Contributions to improve the shells are welcome. Please follow the standard fork-and-pull request workflow. Make sure your code adheres to the existing style to maintain consistency.
 
 ## License
 
