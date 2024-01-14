@@ -22,8 +22,8 @@ This repository hosts two distinct shells implemented in C: a command-line inter
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/[YourUsername]/[YourRepoName].git
-    cd [YourRepoName]
+    git clone https://github.com/ihamzatarar/Custom-Shell-Interpert.git
+    cd [Custom-Shell-Interpert]
     ```
 
 2. **Build the Command-Line Shell**
