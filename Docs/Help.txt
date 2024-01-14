@@ -1,0 +1,3 @@
+Command to run GUI Shell:
+1 .gcc -o shell executor.c initsh.c main.c node.c parser.c prompt.c scanner.c source.c builtins/builtins.c builtins/dump.c symtab/symtab.c $(pkg-config --cflags --libs gtk+-3.0)
+2. ./shell

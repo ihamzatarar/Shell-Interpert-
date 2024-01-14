@@ -1,0 +1,8 @@
+dump
+ls
+ls -l
+echo Hello World!
+pwd
+mkdir new_folder
+du
+man

@@ -1,0 +1,4 @@
+dump
+ls
+ls -l
+echo Hello World!
